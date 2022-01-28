@@ -41,6 +41,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
+
 class Suggestion(models.Model):
     name = models.CharField(max_length=256)
     email = models.EmailField()
