@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+
+
 # Create your models here.
 
 def default_rate():
@@ -10,6 +12,7 @@ def default_rate():
         (4, "⭐⭐⭐⭐"),
         (5, "⭐⭐⭐⭐⭐")
     )
+
 
 class Category(models.Model):
     content = models.CharField(max_length=128)
@@ -23,6 +26,7 @@ class Category(models.Model):
             self.slug = slugify(self.content)
         super(Category, self).save(*args, **kwargs)
 
+
 class Recipe(models.Model):
     name = models.CharField(max_length=256)
     steps = models.TextField()
@@ -30,6 +34,18 @@ class Recipe(models.Model):
     prep = models.IntegerField()
     cook = models.IntegerField()
     yields = models.IntegerField()
-    rate = models.IntegerField(choices=default_rate)
+    rate = models.IntegerField(choices=default_rate())
     img = models.ImageField()
     ctg = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+class Suggestion(models.Model):
+    name = models.CharField(max_length=256)
+    email = models.EmailField()
+    subject = models.CharField(max_length=128)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
