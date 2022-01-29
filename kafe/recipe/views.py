@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 
+
 # Create your views here.
 def index(requests):
     return render(requests, 'index.html', {})
@@ -22,7 +23,10 @@ def contact(requests):
 
 
 def receipe(requests):
+    post = Recipe.objects.all()
+    ctgs = Category.objects.all()
+    ctx = {
+        'post': post,
+        'ctgs': ctgs
+    }
     return render(requests, 'receipe-post.html', {})
-
-
-
