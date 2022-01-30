@@ -22,7 +22,7 @@ def contact(requests):
     return render(requests, 'contact.html', {})
 
 
-def receipe(requests):
+def receipe(requests, pk=1):
     post = Recipe.objects.all()
     ctgs = Category.objects.all()
     ctx = {

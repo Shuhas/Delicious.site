@@ -83,7 +83,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="contact-form-area">
-                        <form action="#" method="post">
+                        <form method="post">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-12 col-lg-6">
@@ -96,7 +96,7 @@
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" class="form-control" id="message" name="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button class="btn delicious-btn mt-30" type="submit">Send</button>
