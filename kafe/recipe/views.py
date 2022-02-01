@@ -4,11 +4,15 @@ from .models import *
 
 # Create your views here.
 def index(requests):
-    return render(requests, 'index.html', {})
+    recipes = Recipe.objects.all()
+    ctx = {
+        'recipes': recipes
+    }
+    return render(requests, 'site/index.html', ctx)
 
 
 def about(requests):
-    return render(requests, 'about.html', {})
+    return render(requests, 'site/about.html', {})
 
 
 def contact(requests):
@@ -23,7 +27,7 @@ def contact(requests):
     except:
         if requests.POST:
             root[1].subs_email = requests.POST.get('subs_email')
-    return render(requests, 'contact.html', {})
+    return render(requests, 'site/contact.html', {})
 
 
 def receipe(requests, pk=1):
@@ -33,4 +37,4 @@ def receipe(requests, pk=1):
         'post': post,
         'ctgs': ctgs
     }
-    return render(requests, 'receipe-post.html', {})
+    return render(requests, 'site/receipe-post.html', {})
