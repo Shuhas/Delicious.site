@@ -12,13 +12,17 @@ def about(requests):
 
 
 def contact(requests):
-    root = Suggestion()
-    if requests.POST:
-        root.name = requests.POST.get('name')
-        root.email = requests.POST.get('email')
-        root.subject = requests.POST.get('subject')
-        root.message = requests.POST.get('message')
-        root.save()
+    root = [Suggestion(), Subscribes()]
+    try:
+        if requests.POST:
+            root[0].name = requests.POST.get('name')
+            root[0].email = requests.POST.get('email')
+            root[0].subject = requests.POST.get('subject')
+            root[0].message = requests.POST.get('message')
+            root[0].save()
+    except:
+        if requests.POST:
+            root[1].subs_email = requests.POST.get('subs_email')
     return render(requests, 'contact.html', {})
 
 

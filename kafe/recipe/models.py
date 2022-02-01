@@ -52,3 +52,8 @@ class Suggestion(models.Model):
         return self.name
 
 
+class Subscribes(models.Model):
+    subs_email = models.EmailField()
+
+    def __str__(self):
+        return self.subs_email
